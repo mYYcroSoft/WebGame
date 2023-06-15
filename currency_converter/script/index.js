@@ -17,8 +17,8 @@ function getCurrencyRates(cur_data) {
       .then(data => {
         currencyRates = data.rates;
         let to_rate = document.getElementById("to_cur").value
-      
-        console.log(calc)
+        let calc = cur_data.count * currencyRates[to_rate]
+        document.getElementById("calculate").innerText = `${calc} ${cur_data.to}`
       })
    
 }

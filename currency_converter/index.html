@@ -13,31 +13,32 @@
 
 
 <div class="container">
-    <input type="number" name="first_count" id="first_count" placeholder="00">
-<div class="setting first">
-    <select id="from_cur">
-    From:
+<input type="number" onchange="calculate()" name="first_count" id="first_count" placeholder="000"><br>
+
+<div class="slectors">
+    <div class="setting first">
+        <span class="title">From</span><br>
+        <select id="from_cur" class="selector" onchange="calculate()"><br>
+                <option value="CZK">CZK</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+    </div>
+    
+    <div class="setting second">
+        <span class="title">To</span><br>
+        <select id="to_cur" class="selector" onchange="calculate()">
             <option value="CZK">CZK</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
         </select>
-        
+    </div>
 
 </div>
 
-<div class="setting second">
-    To:
-    <select id="to_cur">
-        <option value="CZK">CZK</option>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-    </select>
-</div>
-
-<button onclick="calculate()">Převést</button>
 
 <div class="calculation">
-
+<span id="calculate"></span>
 </div>
 </div>
 
