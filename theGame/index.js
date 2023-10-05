@@ -79,18 +79,14 @@ function updatePosition(object, x, y, render){
     let obj = getObjArray(object)
     obj.pos.x += x
     obj.pos.y += y
-    if(render == true ){
-      
+    if(render == true ){      
         const renObj = document.getElementById(object)
-        console.log(renObj.style.left )
-        console.log(obj.pos.x + obj.pos.cal)
         if(obj.pos.x + obj.pos.cal != renObj.style.left){
             renObj.style.left = obj.pos.x + obj.pos.cal
         }
         if(renObj.style.y != obj.pos.y + obj.pos.cal){
             renObj.style.top = obj.pos.y + obj.pos.cal
         }
-       
     }
  }
 
@@ -98,19 +94,17 @@ function updatePosition(object, x, y, render){
 
 document.addEventListener('keydown', function(event) {
     if(event.key == 'd'){
-        updatePosition('player', 35, 0, true)
+        updatePosition('player', 1, 0, true)
     }
     if(event.key == 'a'){
-        player_pos[0] -= 10
-        update_player_pos()
+        updatePosition('player', -1, 0, true)
     }
     if(event.key == 'w'){
-        player_pos[1] -= 10
-        update_player_pos()
+        updatePosition('player', 0, -1, true)
     }
     if(event.key == 's'){
-        player_pos[1] += 10
-        update_player_pos()
+
+        updatePosition('player', 0, +1, true)
     }    
      })
     
