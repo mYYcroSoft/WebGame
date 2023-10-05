@@ -33,8 +33,7 @@ let objects = {
             width: 100,
             height: 5,
             color: '#fff',
-          /*  material: null,*/
-            
+          /*  material: null,*/    
             borderRadius: '10px',
         }
     },
@@ -50,7 +49,6 @@ function redner_object(object){
         `
     );
     let renObj = document.getElementById(object)
-    
     renObj.style.top = `${obj.pos.y}${obj.pos.cal}`
     renObj.style.left = `${obj.pos.x}${obj.pos.cal}`
     for (let property in visualData) {
@@ -71,16 +69,36 @@ function redner_object(object){
         } 
      
     }
-
 }
 
-redner_object('player')
-redner_object('floor')
+function getObjArray(object){
+    return objects[object]
+}
+
+function updatePosition(object, x, y, render){
+    let obj = getObjArray(object)
+    obj.pos.x += x
+    obj.pos.y += y
+    if(render == true ){
+      
+        const renObj = document.getElementById(object)
+        console.log(renObj.style.left )
+        console.log(obj.pos.x + obj.pos.cal)
+        if(obj.pos.x + obj.pos.cal != renObj.style.left){
+            renObj.style.left = obj.pos.x + obj.pos.cal
+        }
+        if(renObj.style.y != obj.pos.y + obj.pos.cal){
+            renObj.style.top = obj.pos.y + obj.pos.cal
+        }
+       
+    }
+ }
+
+
 
 document.addEventListener('keydown', function(event) {
     if(event.key == 'd'){
-        player_pos[0] += 10
-        update_player_pos()
+        updatePosition('player', 35, 0, true)
     }
     if(event.key == 'a'){
         player_pos[0] -= 10
@@ -93,16 +111,10 @@ document.addEventListener('keydown', function(event) {
     if(event.key == 's'){
         player_pos[1] += 10
         update_player_pos()
-    }
-
-    
+    }    
      })
     
-    function update_player_pos(){
-        console.log(player_pos); 
-        document.getElementById("player").style.left = `${player_pos[0]}px`
-        document.getElementById("player").style.top = `${player_pos[1]}px`
-    }
-    function checkCollides(){
 
-    }
+
+redner_object('player')
+redner_object('floor')
