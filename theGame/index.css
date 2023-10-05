@@ -1,0 +1,30 @@
+:root{
+--devColor: rgb(150, 13, 185);
+}
+
+body{
+    background-color: rgb(43, 57, 69);
+}
+
+.player{
+    position: absolute;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-color: aliceblue;
+}
+
+#object{
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: bisque;
+}
+#platform{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: var(--devColor);
+}
