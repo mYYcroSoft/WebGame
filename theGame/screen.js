@@ -1,6 +1,6 @@
-function adjustDivSize() {
+/*function adjustDivSize() {
     const centeredDiv = document.getElementById("screen");
-    /*const text = document.getElementById("text");*/
+    //const text = document.getElementById("text");
     const aspectRatio = 16 / 9; // Desired aspect ratio (4:3)
 
     // Calculate the maximum width based on the viewport width, height, and aspect ratio
@@ -20,4 +20,4 @@ function adjustDivSize() {
 
 
 window.addEventListener("resize", adjustDivSize);
-adjustDivSize();
+adjustDivSize();*/

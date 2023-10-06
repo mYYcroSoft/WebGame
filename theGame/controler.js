@@ -1,6 +1,7 @@
+import { updatePosition, getOjbectPosition } from "./ObjectRender.js"
 
 //set up variables
-let playerPos = [/*x , y*/ 0,0]
+let playerPos = [/*x , y*/ 0, 0]
 let currentGravity = 0
 let onGround = false
 let movementSpeed = 0
@@ -46,6 +47,7 @@ addEventListener("keyup", (event) => {
 });
 
 function apply_gravity() {
+    console.log(playerPos[1])
     if (playerPos[1] < baseGround || currentGravity < 0) {
         onGround = false
 
@@ -95,8 +97,7 @@ function apply_friction() {
 }
 
 function update_playerPos(){
-    document.getElementById("player").style.left = `${playerPos[0]}px`
-    document.getElementById("player").style.top = `${playerPos[1]}px`
+    updatePosition('player', playerPos[0], playerPos[1], true);
 }
 
 setInterval(apply_gravity, 1000/60)

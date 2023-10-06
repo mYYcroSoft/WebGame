@@ -48,8 +48,8 @@ export function getObjectsList(){
 
 export function updatePosition(object, x, y, render){
     let obj = getObject(object)
-    obj.pos.x += x
-    obj.pos.y += y
+    obj.pos.x = x
+    obj.pos.y = y
     if(render == true ){      
         const renObj = document.getElementById(object)
         if(obj.pos.x + obj.pos.cal != renObj.style.left){
