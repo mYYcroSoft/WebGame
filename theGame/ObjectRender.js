@@ -27,7 +27,7 @@ export function redner_object(object){
         } else if (property == 'height'){
             renObj.style[property] = `${visualData[property]}${obj.cal}`;
         } else {
-            console.log(property + ' ' + visualData[property]);
+           /* console.log(property + ' ' + visualData[property]);*/
             renObj.style[property] = visualData[property];
         } 
      
@@ -41,6 +41,7 @@ export function getObject(object){
 export function getOjbectPosition(object){
     return objects[object].pos
 }
+
 
 export function getObjectsList(){
     return objects
