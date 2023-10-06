@@ -47,7 +47,7 @@ addEventListener("keyup", (event) => {
 });
 
 function apply_gravity() {
-    console.log(playerPos[1])
+    /*console.log(playerPos[1])*/
     if (playerPos[1] < baseGround || currentGravity < 0) {
         onGround = false
 
@@ -64,7 +64,7 @@ function apply_gravity() {
 }
 
 function apply_movement() {
-    console.log(currentGravity);
+   /* console.log(currentGravity);*/
     if (keys.a && onGround && movementSpeed > -maxMovementSpeed + 1) {
         movementSpeed -= movementIntensity
     }

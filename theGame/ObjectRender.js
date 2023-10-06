@@ -25,7 +25,7 @@ export function redner_object(object){
         } else if (property == 'width'){
             renObj.style[property] = `${visualData[property]}${obj.cal}`;
         } else if (property == 'height'){
-            renObj.style[property] = `${visualData[property]}${obj.cal}`;
+            renObj.style[property] = `50px`;
         } else {
            /* console.log(property + ' ' + visualData[property]);*/
             renObj.style[property] = visualData[property];
@@ -47,6 +47,7 @@ export function getObjectsList(){
     return objects
 }
 
+
 export function updatePosition(object, x, y, render){
     let obj = getObject(object)
     obj.pos.x = x
@@ -62,3 +63,29 @@ export function updatePosition(object, x, y, render){
     }
  }
 
+
+ export function updateCSS(object) {
+    const renObj = document.getElementById(object);
+    const dataObject = objects['player'];
+    var visualData = dataObject.visual;
+    console.log(visualData)
+    for (let property in visualData) {
+        /*console.log(property);*/
+        if (property === 'color') {
+            console.log(property);  
+            if (renObj.style.backgroundColor != visualData[property]) {
+                renObj.style.backgroundColor = visualData[property];
+            }
+        } else if(property === 'material'){ 
+            const meshMaterial = materials[visualData[property]]
+            if(renObj.style.backgroundImage != `url('${meshMaterial}')`){
+                renObj.style.backgroundImage =  `url('${meshMaterial}')`;
+                renObj.style.backgroundSize =  `100%`;
+            } 
+        } else {
+            if(renObj.style[property] != visualData[property]){
+                renObj.style[property] = visualData[property]
+            }
+        }
+    }
+}
