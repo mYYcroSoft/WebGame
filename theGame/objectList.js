@@ -5,7 +5,7 @@ export const objects = {
     player: {
         data: {},
         type: 'controller',
-        canColide: false,
+        solid: false,
         colider: false,
         pos: {x: 0, y: 0, cal: 'px'},
         cal: 'px',
@@ -20,7 +20,7 @@ export const objects = {
     floor: {
         data: {},
         type: 'colider',
-        canColide: false,
+        solid: false,
         colider: true,
         pos: {x: 500, y: 400, cal: 'px'},
         cal: 'px',
