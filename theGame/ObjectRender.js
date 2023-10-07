@@ -42,6 +42,10 @@ export function getOjbectPosition(object){
     return objects[object].pos
 }
 
+export function getObjectSize(object){
+    return [objects[object].visual.width, objects[object].visual.height]
+}
+
 
 export function getObjectsList(){
     return objects

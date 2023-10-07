@@ -1,4 +1,7 @@
 import * as mesh from './ObjectRender.js'
+import { objects } from './objectList.js'
 
-mesh.redner_object('player')
-mesh.redner_object('floor')
+for (let object in objects) {
+    mesh.redner_object(object)
+}
+

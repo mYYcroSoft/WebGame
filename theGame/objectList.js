@@ -7,15 +7,14 @@ export const objects = {
         type: 'controller',
         canColide: false,
         colider: false,
-        pos: {x: 15, y: 35, cal: 'px'},
+        pos: {x: 0, y: 0, cal: 'px'},
         cal: 'px',
         visual: {
-            position: 'relative',
+            position: 'absolute',
             width: 50,
             height: 50,
             color: '#fff',
             material: 'dirt',
-            borderRadius: '10px',
         }
     },
     floor: {
@@ -23,17 +22,29 @@ export const objects = {
         type: 'colider',
         canColide: false,
         colider: true,
-        pos: {x: 0, y: 150, cal: 'px'},
-        cal: '%',
+        pos: {x: 500, y: 400, cal: 'px'},
+        cal: 'px',
         visual: {
             position: 'absolute',
-            width: 100,
-            height: 5,
+            width: 150,
+            height: 50,
             color: '#fff',
           /*  material: null,*/    
-            borderRadius: '10px',
         }
     },
-
- 
+    floor2: {
+        data: {},
+        type: 'colider',
+        canColide: false,
+        colider: true,
+        pos: {x: 650, y: 350, cal: 'px'},
+        cal: 'px',
+        visual: {
+            position: 'absolute',
+            width: 150,
+            height: 50,
+            color: '#f00',
+          /*  material: null,*/    
+        }
+    },
 };
