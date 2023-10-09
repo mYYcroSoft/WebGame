@@ -1,5 +1,5 @@
 import { objects } from './objectList.js';
-import { baseGround } from './gravitySystem.js';
+import { baseGround } from './movementSystem.js';
 var coliders = []
 
 for (let object in objects) {
