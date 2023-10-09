@@ -1,5 +1,5 @@
 import { objects } from './objectList.js';
-import { baseGround } from './controler.js';
+import { baseGround } from './gravitySystem.js';
 var coliders = []
 
 for (let object in objects) {
@@ -15,13 +15,20 @@ export function getColiderBellowByX(x, y) {
         let coliderWidth = coliders[colider].visual.width
         let playerHeight = objects['player'].visual.height
         if ((x > coliderX && x < coliderX + coliderWidth) && (y + playerHeight <= coliderY)) {
-            return coliders[colider].pos.y - playerHeight
+            return [coliderY - playerHeight, colider]
         }
     }
 }
 
 export function getColidersBellowByX(x, y) {
-    return Math.min(getColiderBellowByX(x, y) ?? baseGround, getColiderBellowByX(x + objects['player'].visual.width, y) ?? baseGround)
+    let Point1 = getColiderBellowByX(x, y) ?? [baseGround, 'void']
+    let Point2 = getColiderBellowByX(x + objects['player'].visual.width, y) ?? [baseGround, 'void']
+
+    if (Point1[0] > Point2[0]) {
+        return Point2
+    } else {
+        return Point1
+    }
 }
 
 export function getColiderAboveByX(x, y) {
@@ -30,13 +37,65 @@ export function getColiderAboveByX(x, y) {
         let coliderY = coliders[colider].pos.y
         let coliderWidth = coliders[colider].visual.width
         let coliderHeight = coliders[colider].visual.height
-        let playerHeight = objects['player'].visual.height
-        if ((x > coliderX && x < coliderX + coliderWidth) && (y + playerHeight >= coliderY)) {
-            return coliders[colider].pos.y + coliderHeight
+        if ((x > coliderX && x < coliderX + coliderWidth) && (y >= coliderY)) {
+            return [coliderY + coliderHeight, colider]
         }
     }
 }
 
 export function getColidersAboveByX(x, y) {
-    return Math.max(getColiderAboveByX(x, y) ?? 0, getColiderAboveByX(x + objects['player'].visual.width, y) ?? 0)
+    let Point1 = getColiderAboveByX(x, y) ?? [0, 'void']
+    let Point2 = getColiderAboveByX(x + objects['player'].visual.width, y) ?? [0, 'void']
+
+    if (Point1[0] < Point2[0]) {
+        return Point2
+    } else {
+        return Point1
+    }
+}
+
+export function getColiderToRightByY(x, y) {
+    for (let colider in coliders) {
+        let coliderX = coliders[colider].pos.x
+        let coliderY = coliders[colider].pos.y
+        let coliderHeight = coliders[colider].visual.height
+        let playerWidth = objects['player'].visual.width
+        if ((y >= coliderY && y <= coliderY + coliderHeight) && (x + playerWidth <= coliderX)) {
+            return [coliderX - playerWidth, colider]
+        }
+    }
+}
+
+export function getColidersToRightByY(x, y) {
+    let Point1 = getColiderToRightByY(x, y) ?? [900, 'void']
+    let Point2 = getColiderToRightByY(x, y + objects['player'].visual.height) ?? [900, 'void']
+
+    if (Point1[0] > Point2[0]) {
+        return Point2
+    } else {
+        return Point1
+    }
+}
+
+export function getColiderToLeftByY(x, y) {
+    for (let colider in coliders) {
+        let coliderX = coliders[colider].pos.x
+        let coliderY = coliders[colider].pos.y
+        let coliderHeight = coliders[colider].visual.height
+        let coliderWidth = coliders[colider].visual.width
+        if ((y >= coliderY && y <= coliderY + coliderHeight) && (x >= coliderX + coliderWidth)) {
+            return [coliderX + coliderWidth, colider]
+        }
+    }
+}
+
+export function getColidersToLeftByY(x, y) {
+    let Point1 = getColiderToLeftByY(x, y) ?? [0, 'void']
+    let Point2 = getColiderToLeftByY(x, y + objects['player'].visual.height) ?? [0, 'void']
+
+    if (Point1[0] < Point2[0]) {
+        return Point2
+    } else {
+        return Point1
+    }
 }
