@@ -1,8 +1,7 @@
 import {objects, materials} from './objectList.js'
-
 const scene = document.getElementById('screen')
 
-
+console.log(objects)
 export function redner_object(object){
     const obj = objects[object]
     let visualData = obj.visual
