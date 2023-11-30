@@ -36,7 +36,7 @@ floor2: {
     data: {},
     type: 'colider',
     canColide: false,
-    colider: true,
+    colider:  true,
     pos: {x: 650, y: 350, cal: 'px'},
     cal: 'px',
     visual: {
@@ -47,6 +47,22 @@ floor2: {
       /*  material: null,*/    
     }
 },
-    
+  
+cube: {
+  class: 'scene_1',
+  data: {},
+  type: 'colider',
+  canColide: false,
+  colider: true,
+  pos: {x: 650, y: 350, cal: 'px'},
+  cal: 'px',
+  visual: {
+      position: 'absolute',
+      width: 50,
+      height: 50,
+      color: 'red',
+    /*  material: null,*/    
+  }
+},
 
 }

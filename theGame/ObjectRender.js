@@ -14,7 +14,7 @@ export function redner_object(object){
     renObj.style.top = `${obj.pos.y}${obj.pos.cal}`
     renObj.style.left = `${obj.pos.x}${obj.pos.cal}`
     for (let property in visualData) {
-        if(property == 'color'){
+        if(property == 'color'){ 
             renObj.style.backgroundColor = visualData[property];
         } else if (property == 'material') {
             const meshMaterialName = visualData[property]

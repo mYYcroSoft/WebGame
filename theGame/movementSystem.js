@@ -35,7 +35,7 @@ export function apply_friction() {
         }
     }
     if (movementSpeed < 0) {
-        if (onGround) {
+        if (onGround) {     
             movementSpeed = Math.min(0, movementSpeed + groundFriction)
         } else {
             movementSpeed = Math.min(0, movementSpeed + airFriction)

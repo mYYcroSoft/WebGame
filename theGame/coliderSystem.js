@@ -1,8 +1,9 @@
 import { objects } from './objectList.js';
 import { baseGround } from './movementSystem.js';
 var coliders = []
-
+console.log(objects)
 for (let object in objects) {
+    console.log("SDS");
     if (objects[object].colider) {
         coliders[object] = objects[object]
     }  
