@@ -24,7 +24,7 @@ export function redner_object(object){
         } else if (property == 'width'){
             renObj.style[property] = `${visualData[property]}${obj.cal}`;
         } else if (property == 'height'){
-            renObj.style[property] = `50px`;
+            renObj.style[property] = `${visualData[property]}${obj.cal}`;
         } else {
            /* console.log(property + ' ' + visualData[property]);*/
             renObj.style[property] = visualData[property];

@@ -1,5 +1,5 @@
 import { updatePosition } from "./ObjectRender.js"
-import { getColidersToRightByY, getColidersToLeftByY, getColidersAboveByX, getColidersBellowByX } from "./coliderSystem.js"
+import { getColidersToRightByY, getColidersToLeftByY, getColidersAboveByX, getColidersBellowByX, getClosestColiderBellowPlayer, getClosestColiderAbovePlayer } from "./coliderSystem.js"
 import { registeredKeys } from "./keyRegister.js"
 
 //set up variables
@@ -14,10 +14,10 @@ let lastColiderBellow = []
 //modifiers
 let jumpForce = 20
 let groundFriction = 1
-let airFriction = 0.05
+let airFriction = 0.005
 let movementIntensity = 1.8
 let maxMovementSpeed = 8
-
+let bounce = -0.2
 let maxGravity = 10
 let gravityIntensity = 0.2
 
@@ -58,11 +58,11 @@ export function apply_movement() {
     }
     if (playerPos[0] + movementSpeed > ColiderToLeft[0]) {
         playerPos[0] = ColiderToLeft[0]
-        movementSpeed = 0
+        movementSpeed = movementSpeed * bounce
         console.warn("hit " + ColiderToLeft[1] + " from left")
     } else if (playerPos[0] + movementSpeed < ColiderToRight[0]) {
         playerPos[0] = ColiderToRight[0]
-        movementSpeed = 0
+        movementSpeed = movementSpeed * bounce
         console.warn("hit " + ColiderToRight[1] + " from right")
     }
     playerPos[0] += movementSpeed
@@ -72,9 +72,11 @@ export function apply_movement() {
 export function apply_gravity() {
     let ColiderAbove = getColidersAboveByX(playerPos[0], playerPos[1])
     let ColiderBellow = getColidersBellowByX(playerPos[0], playerPos[1])
+    console.error(getClosestColiderBellowPlayer(playerPos[0], playerPos[1]).pos.y)
+    console.error(getClosestColiderAbovePlayer(playerPos[0], playerPos[1]).pos.y)
     if (playerPos[1] < ColiderBellow[0] || currentGravity <= 0) {
         if (ColiderAbove[0] > playerPos[1] + currentGravity) {
-            console.warn("hit " + ColiderAbove[1] + " from above")
+            //console.warn("hit " + ColiderAbove[1] + " from above")
             currentGravity = 0
         } else {
             lastColiderBellow = ColiderBellow
@@ -86,7 +88,7 @@ export function apply_gravity() {
         onGround = false
         update_playerPos()
     } else {
-        console.warn("hit " + lastColiderBellow[1] + " from bellow")
+        //console.warn("hit " + lastColiderBellow[1] + " from bellow")
         onGround = true
         currentGravity = maxGravity
     } 
